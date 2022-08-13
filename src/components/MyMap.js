@@ -1,7 +1,6 @@
-import * as React from 'react';
-import Map from 'react-map-gl';
+import React, { useState } from "react";
+import Map, { Marker } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
-
 
 export default function MyMap() {
 
@@ -28,19 +27,28 @@ export default function MyMap() {
             }
         ]
     })
-    const [initialViewState] = useState(={{
+    const [initialViewState] = useState({
         latitude: 35,
-        longitude: -90,
+        longitude: -95,
         zoom: 3
     })
+    const [clickCoords, setClickCoords] = useState({});
+
+    const userClick = (e) => setClickCoords({
+        latitude: e.lngLat.lat,
+        longitude: e.lngLat.lng
+    })
+
 
     return (
         <Map
             initialViewState={initialViewState}
             mapLib={maplibregl}
-            style={{ width: 800, height: 600 }}
+            style={{ height: '100vh', width: '100vw' }}
             mapStyle={mapStyle}
+            onClick={userClick}
         >
-        </Map>
+            {!Object.keys(clickCoords).length === 0 ? <Marker {...clickCoords} /> : null}
+        </Map >
     )
 }
