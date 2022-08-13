@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import './banner.css'
+import React from 'react';
+import './Banner.css'
 
 export default function Banner() {
     return (
