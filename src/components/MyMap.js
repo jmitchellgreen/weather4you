@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Map, { Marker } from 'react-map-gl';
+import InteractiveMap, { Marker } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 
 export default function MyMap() {
@@ -32,23 +32,25 @@ export default function MyMap() {
         longitude: -95,
         zoom: 3
     })
-    const [clickCoords, setClickCoords] = useState({});
+    const [clickCoords, setClickCoords] = useState([]);
 
-    const userClick = (e) => setClickCoords({
-        latitude: e.lngLat.lat,
-        longitude: e.lngLat.lng
-    })
+    const userClick = e => setClickCoords(
+        [
+            { 'longitude': e.lngLat.lng },
+            { 'latitude': e.lngLat.lat }
+        ]
+    )
 
 
     return (
-        <Map
+        <InteractiveMap
             initialViewState={initialViewState}
             mapLib={maplibregl}
             style={{ height: '100vh', width: '100vw' }}
             mapStyle={mapStyle}
             onClick={userClick}
         >
-            {!Object.keys(clickCoords).length === 0 ? <Marker {...clickCoords} /> : null}
-        </Map >
+            {clickCoords.map((c) => <Marker {...c}></Marker>)}
+        </InteractiveMap>
     )
 }
