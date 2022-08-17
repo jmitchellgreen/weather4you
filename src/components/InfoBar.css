@@ -1,0 +1,10 @@
+.infobar {
+    background-color: wheat;
+    /* width:  */
+    height: 100px;
+    z-index: 1;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+}

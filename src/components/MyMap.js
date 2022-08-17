@@ -36,8 +36,10 @@ export default function MyMap() {
 
     const userClick = e => setClickCoords(
         [
-            { 'longitude': e.lngLat.lng },
-            { 'latitude': e.lngLat.lat }
+            {
+                longitude: e.lngLat.lng,
+                latitude: e.lngLat.lat
+            }
         ]
     )
 
@@ -50,7 +52,7 @@ export default function MyMap() {
             mapStyle={mapStyle}
             onClick={userClick}
         >
-            {clickCoords.map((c) => <Marker {...c}></Marker>)}
+            {clickCoords.map((c, i) => <Marker {...c} key={i}></Marker>)}
         </InteractiveMap>
     )
 }
