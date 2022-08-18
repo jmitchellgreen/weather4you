@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import InteractiveMap, { Marker } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import InfoBar from './InfoBar.js'
@@ -36,10 +36,7 @@ export default function MyMap() {
     })
     const [clickCoords, setClickCoords] = useState([]);
 
-    let userClick;
-
-
-    userClick = e => setClickCoords(
+    const userClick = e => setClickCoords(
         [
             {
                 longitude: e.lngLat.lng,
@@ -47,9 +44,6 @@ export default function MyMap() {
             }
         ]
     )
-
-
-
 
     return (
         <>
@@ -60,9 +54,10 @@ export default function MyMap() {
                 mapStyle={mapStyle}
                 onClick={userClick}
             >
-                {clickCoords.map((c, i) => <Marker {...c} key={i}></Marker>)}
+                {clickCoords.map((c, i) => <Marker {...c} key={i} />)}
             </InteractiveMap>
-            <InfoBar coords={clickCoords.map((c) => [c])} />
+
+            {clickCoords.map((c) => <InfoBar coords={{ ...c }} />)}
         </>
     )
 }
