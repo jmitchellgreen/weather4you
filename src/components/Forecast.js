@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './Forecast.css'
 
 export default function Forecast(props) {
 

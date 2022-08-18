@@ -1,12 +1,24 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React from 'react';
-
+import './LineChart.css'
 
 export default function TinyLineChart(props) {
+
     return (
-        <ResponsiveContainer width="100%" height="100%">
-            <LineChart width={300} height={100} data={props.data}>
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
+        <ResponsiveContainer height='80%'>
+            <LineChart
+                data={props.data}
+                margin={{
+                    top: 0,
+                    right: 0,
+                    left: 50,
+                    bottom: 0,
+                }}
+            >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="startTime" />
+                <YAxis />
+                <Line type="monotone" dataKey="temperature" dot={false} />
             </LineChart>
         </ResponsiveContainer>
     )
