@@ -6,7 +6,7 @@ export default function TinyLineChart(props) {
 
     const formatXAxis = (tickItem) => {
         const d = new Date(tickItem);
-        return d.getHours();
+        return d.toLocaleDateString();
     }
 
     return (
@@ -14,17 +14,17 @@ export default function TinyLineChart(props) {
             <LineChart
                 data={props.data}
                 margin={{
-                    top: 0,
-                    right: 0,
+                    top: 10,
+                    right: 10,
                     left: 0,
-                    bottom: 15,
+                    bottom: 10,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey={"startTime"}
                     tickFormatter={formatXAxis}
-                    interval={5}
+                    interval={24}
                 />
                 <YAxis />
                 <Line type="monotone" dataKey="temperature" dot={false} />
