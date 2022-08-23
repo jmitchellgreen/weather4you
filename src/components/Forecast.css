@@ -1,14 +1,8 @@
 .forecast-container {
-    display: flex;
     width: 15vw;
 }
 
 .forecast-container p {
     width: 15vw;
-    flex: 1;
-}
-
-.forecast-container img {
-    bottom: 5px;
     flex: 1;
 }
