@@ -57,7 +57,7 @@ export default function MyMap() {
                 {clickCoords.map((c, i) => <Marker {...c} key={i} />)}
             </InteractiveMap>
 
-            {clickCoords.map((c) => <InfoBar coords={{ ...c }} />)}
+            {clickCoords.map((c, i) => <InfoBar coords={{ ...c }} key={i} />)}
         </>
     )
 }
