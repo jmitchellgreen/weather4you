@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InteractiveMap, { Marker } from 'react-map-gl';
+import InteractiveMap, { Marker, AttributionControl } from 'react-map-gl';
 import maplibregl from 'maplibre-gl';
 import InfoBar from './InfoBar.js'
 
@@ -15,8 +15,8 @@ export default function MyMap() {
                     'https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
                 ],
                 'tileSize': 256,
-                'attribution':
-                    'Map tiles by <a target="_top" rel="noopener" href="http://stamen.com">Stamen Design</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>'
+                // 'attribution':
+                //     'Map tiles by <a target="_top" rel="noopener" href="http://stamen.com">Stamen Design</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>'
             }
         },
         'layers': [
@@ -55,6 +55,7 @@ export default function MyMap() {
                 onClick={userClick}
             >
                 {clickCoords.map((c, i) => <Marker {...c} key={i} />)}
+                <AttributionControl position='top-left' compact={true} />
             </InteractiveMap>
 
             {clickCoords.map((c, i) => <InfoBar coords={{ ...c }} key={i} />)}

@@ -1,10 +1,20 @@
 .infobar {
     background-color: wheat;
-    height: 25vh;
+    height: 30vh;
     z-index: 1;
     left: 10px;
     right: 10px;
-    bottom: 10px;
+    bottom: 0px;
+    /* padding: 15px; */
     position: absolute;
     display: flex;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    /* position: absolute; */
+    top: 50%;
+    transform: translateY(40%);
 }

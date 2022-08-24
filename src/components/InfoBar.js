@@ -41,9 +41,11 @@ export default function InfoBar(props) {
         getForecast()
     }, [props.coords])
 
+
     return (
         <div className='infobar'>
-            <Forecast shortDesc={shortDesc} icon={icon} relativeLocation={relativeLocation} />
+            <Forecast shortDesc={shortDesc} relativeLocation={relativeLocation} />
+            <img src={icon} />
             <LineChart data={periods} />
         </div>
     )
