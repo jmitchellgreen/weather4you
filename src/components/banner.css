@@ -6,6 +6,8 @@
 }
 
 .banner {
+    margin: 15px;
+    padding: 5px;
     background-color: wheat;
     position: absolute;
 }

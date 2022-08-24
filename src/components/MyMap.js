@@ -50,7 +50,7 @@ export default function MyMap() {
             <InteractiveMap
                 initialViewState={initialViewState}
                 mapLib={maplibregl}
-                style={{ height: '100vh', width: '100vw' }}
+                style={{ height: '100vh', width: '100%' }}
                 mapStyle={mapStyle}
                 onClick={userClick}
             >
