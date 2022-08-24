@@ -1,17 +1,27 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import React from 'react';
 import './LineChart.css'
 
 export default function TinyLineChart(props) {
 
-    const formatXAxis = (tickItem) => {
+    const formatTime = (tickItem) => {
         const d = new Date(tickItem);
         return d.toLocaleDateString();
     }
 
+    const formatWindSpeed = (speed) => {
+        speed.forEach(element => {
+            element.windSpeed = element.windSpeed.slice(0, -3)
+        });
+        return "windSpeed"
+    }
+
+
+    console.log(props)
+
     return (
-        <ResponsiveContainer height='80%'>
-            <LineChart
+        <ResponsiveContainer>
+            <AreaChart
                 data={props.data}
                 margin={{
                     top: 10,
@@ -23,12 +33,29 @@ export default function TinyLineChart(props) {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                     dataKey={"startTime"}
-                    tickFormatter={formatXAxis}
+                    tickFormatter={formatTime}
                     interval={24}
                 />
                 <YAxis />
-                <Line type="monotone" dataKey="temperature" dot={false} />
-            </LineChart>
+                <Tooltip labelFormatter={(value, name) => {
+                    const d = new Date(value)
+                    return d.toLocaleDateString("en-US", { hour: 'numeric' })
+                }} />
+                <Legend verticalAlign='top' height={15} />
+                <Area
+                    name="Tempature (F)"
+                    type="monotone"
+                    dataKey="temperature"
+                    dot={false}
+                />
+                <Area
+                    name="Wind Speed (mph)"
+                    type="monotone"
+                    stroke="red"
+                    dataKey={formatWindSpeed(props.data)}
+                    dot={false}
+                />
+            </AreaChart>
         </ResponsiveContainer>
     )
 }
