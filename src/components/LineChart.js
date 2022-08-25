@@ -6,7 +6,7 @@ export default function LineChart(props) {
 
     const formatTime = (tickItem) => {
         const d = new Date(tickItem);
-        return d.toLocaleDateString();
+        return d.toLocaleDateString("en-US", { month: 'numeric', day: 'numeric' });
     }
 
     const formatWindSpeed = (speed) => {
@@ -28,7 +28,7 @@ export default function LineChart(props) {
                     top: 0,
                 }}
             >
-                <ResponsiveContainer width={'99%'} height={200}>
+                <ResponsiveContainer width={'99%'} height={180}>
                     <AreaChart
                         data={props.data}
                         margin={{
